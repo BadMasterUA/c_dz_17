@@ -31,5 +31,14 @@ int main()
         cout << "Number class room in shool " << CityShool[i]->GetClassRoom() << endl;  
 
     }
+    cout <<"\n";
+    for (int i = 0; i < MaxVale; i++)
+    {
+        cout << "Number class room in shool " << CityShool[i]->GetClassRoom() << endl;
+        delete CityShool[i];
+        CityShool[i] = nullptr;  
+
+    }
+    
     return 0;
 }
