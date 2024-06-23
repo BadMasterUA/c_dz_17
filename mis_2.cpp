@@ -6,20 +6,30 @@ using namespace std;
 class Shool
 {
 public:
-    Shool(int c_room): itsClassRoom(c_room) { Students++; }
-    virtual ~Shool() { Students--; }
-    virtual int GetClassRoom() { return itsClassRoom; }
-    static int GetStudents() { return Students;}
+    Shool(int sudents): itsStudents(sudents) { ClassRoom++; }
+    virtual ~Shool() { ClassRoom--; }
+    static int GetClassRoom() { return ClassRoom; }
+    virtual int GetStudents() { return itsStudents;}
 
 private:
-    int itsClassRoom; // классов
-    static int Students; // учеников
+    static int ClassRoom; // классов
+    int itsStudents; // учеников
 };
 
 //инициализируем статическую переменную
-int Shool::Students = 0;
+int Shool::ClassRoom = 0;
 
 int main()
 {
+    const int MaxVale = 3; // кол-во объектов
+    Shool *CityShool[MaxVale];
+
+    //создаем новые объекты с запросом значений у пользователя
+    for (int i = 0; i < MaxVale; i++)
+    {
+        CityShool[i] = new Shool(i);
+        cout << "Number class room in shool " << CityShool[i]->GetClassRoom() << endl;  
+
+    }
     return 0;
 }
