@@ -11,24 +11,19 @@ public:
     virtual ~Shool() { ClassRoom--; }
     static int GetClassRoom() { return ClassRoom; } // статическая функция которая возворощает значения закрытой статической переменной
     virtual int GetStudents() { return itsStudents;}
-    virtual void SetStudenrs() const = 0; // виртуальная функция
+    virtual void SetStudenrs(int stud) { itsStudents = stud; }
 
 private:
     static int ClassRoom; // классов (зашищенная закрытая переменная)
     int itsStudents; // учеников
 };
 
-//реализация функции
-void Shool::SetStudenrs(int stud)
-{
-
-}
-
 //инициализируем статическую переменную
 int Shool::ClassRoom = 0;
 
 int main()
 {
+    /*
     const int MaxVale = 3; // кол-во объектов
     Shool *CityShool[MaxVale];
 
@@ -46,7 +41,15 @@ int main()
         delete CityShool[i];
         CityShool[i] = nullptr;  
 
-    }
-    
+    }*/
+
+    void (Shool::*pFunc)(int &) = 0; // указатель на функцию
+    Shool *ptr = nullptr; // указатель на объект
+
+    ptr = new Shool(20); // создаем новый объект
+
+    //
+    delete ptr; // удоляем объект
+
     return 0;
 }
