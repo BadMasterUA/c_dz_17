@@ -11,7 +11,7 @@ public:
     virtual ~Shool() { ClassRoom--; }
     static int GetClassRoom() { return ClassRoom; } // статическая функция которая возворощает значения закрытой статической переменной
     virtual int GetStudents() { return itsStudents;}
-    virtual void SetStudenrs(int stud) { itsStudents = stud; }
+    //virtual void SetStudenrs(int stud) { itsStudents = stud; }
 
 private:
     static int ClassRoom; // классов (зашищенная закрытая переменная)
@@ -43,12 +43,14 @@ int main()
 
     }*/
 
-    void (Shool::*pFunc)(int &) = 0; // указатель на функцию
+    int (Shool::*pFunc) = 0; // указатель на функцию
     Shool *ptr = nullptr; // указатель на объект
 
     ptr = new Shool(20); // создаем новый объект
 
-    //
+    pFunc = &Shool::GetStudents;
+
+    cout << (ptr->*pFunc)() << endl; 
     delete ptr; // удоляем объект
 
     return 0;
