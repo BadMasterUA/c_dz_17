@@ -1,4 +1,4 @@
-/*Задание №2 и №3*/
+
 #include<iostream>
 
 using namespace std;
@@ -11,11 +11,18 @@ public:
     virtual ~Shool() { ClassRoom--; }
     static int GetClassRoom() { return ClassRoom; } // статическая функция которая возворощает значения закрытой статической переменной
     virtual int GetStudents() { return itsStudents;}
+    virtual void SetStudenrs() const = 0; // виртуальная функция
 
 private:
     static int ClassRoom; // классов (зашищенная закрытая переменная)
     int itsStudents; // учеников
 };
+
+//реализация функции
+void Shool::SetStudenrs(int stud)
+{
+
+}
 
 //инициализируем статическую переменную
 int Shool::ClassRoom = 0;
