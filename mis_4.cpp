@@ -43,7 +43,7 @@ int main()
 
     }*/
 
-    int (Shool::*pFunc) = 0; // указатель на функцию
+    int (Shool::*pFunc)(); // указатель на функцию
     Shool *ptr = nullptr; // указатель на объект
 
     ptr = new Shool(20); // создаем новый объект
